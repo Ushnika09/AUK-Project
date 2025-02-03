@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SafeHaven - Home</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script defer src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script defer src="../js/script.js"></script>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav>
+        <div class="logo">SafeHaven</div>
+        <ul>
+            <li><a href="home.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="report.html">Report</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a id="login-btn" href="login.html">Login</a></li>
+            <li><a id="register-btn" href="register.html">Register</a></li>
+        </ul>
+        <button id="dark-mode-toggle">🌙 Dark Mode</button>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h2>Your Safety, Our Priority</h2>
+            <p>Report and view unsafe locations in real-time.</p>
+            <a href="register.html" class="btn">Get Started</a>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <section class="map-section">
+        <h2>Explore Reported Locations</h2>
+        <div id="map"></div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2025 SafeHaven. All rights reserved.</p>
+    </footer>
+</body>
+</html>
