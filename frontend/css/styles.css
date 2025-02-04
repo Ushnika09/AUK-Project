@@ -1,0 +1,222 @@
+/* General Styles */
+:root {
+    --background-color: #fff8e1;
+    --text-color: #212121;
+    --primary-color: #00bfa6;
+    --secondary-color: #3f51b5;
+    --accent-color: #ff4081;
+    --card-bg-color: #ffffff;
+    --nav-bg-color: #2c3e50;
+    --nav-text-color: #ffffff;
+    --footer-bg-color: #2c3e50;
+    --footer-text-color: #ffffff;
+}
+
+/* Dark Mode Colors */
+body.dark-mode {
+    --background-color: #0f172a;
+    --text-color: #f5f5f5;
+    --primary-color: #00e0b1;
+    --secondary-color: #536dfe;
+    --accent-color: #ff4081;
+    --card-bg-color: #1e293b;
+    --nav-bg-color: #374151;
+    --nav-text-color: #ffffff;
+    --footer-bg-color: #374151;
+    --footer-text-color: #ffffff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--background-color);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Navigation Bar */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: var(--nav-bg-color);
+    color: var(--nav-text-color);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+nav .logo {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+nav .nav-links {
+    list-style: none;
+    display: flex;
+}
+
+nav .nav-links li {
+    margin-left: 2rem;
+}
+
+nav .nav-links a {
+    color: var(--nav-text-color);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease, transform 0.2s;
+}
+
+nav .nav-links a:hover {
+    color: var(--accent-color);
+    transform: scale(1.05);
+}
+
+/* Hero Section */
+.hero {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 5rem 2rem;
+    background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+    color: #fff;
+    transition: background 0.3s ease;
+}
+
+body.dark-mode .hero {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+}
+
+.hero h1 {
+    font-size: 3.5rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
+}
+
+.hero p {
+    font-size: 1.3rem;
+    margin-bottom: 2rem;
+}
+
+.hero .cta-buttons {
+    display: flex;
+    gap: 1rem;
+}
+
+.hero .cta-button {
+    padding: 0.8rem 2rem;
+    background-color: var(--secondary-color);
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.2s;
+}
+
+.hero .cta-button:hover {
+    background-color: var(--accent-color);
+    transform: scale(1.1);
+}
+
+/* Map Section */
+.map-container {
+    padding: 2rem;
+    background-color: var(--card-bg-color);
+    border-radius: 10px;
+    margin: 2rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Safety Tips */
+.safety-tips {
+    padding: 2rem;
+    background-color: var(--card-bg-color);
+    border-radius: 10px;
+    margin: 2rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.safety-tips h2 {
+    margin-bottom: 1rem;
+    color: var(--secondary-color);
+    font-weight: 700;
+}
+.tips-carousel {
+    display: flex;
+    gap: 1rem;
+    overflow-x: auto;
+}
+
+.tip {
+    padding: 1rem;
+    background-color: var(--background-color);
+    border-radius: 5px;
+    flex: 0 0 auto;
+    width: 300px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Dark Mode Text Fix */
+body.dark-mode .tip {
+    background-color: var(--card-bg-color);
+    color: #ffffff;
+}
+
+/* Statistics */
+.statistics {
+    padding: 2rem;
+    background-color: var(--card-bg-color);
+    border-radius: 10px;
+    margin: 2rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.statistics h2 {
+    margin-bottom: 1rem;
+    color: var(--secondary-color);
+    font-weight: 700;
+}
+.charts {
+    width: 100%;
+    height: 300px;
+}
+
+body.dark-mode .statistics h2,
+body.dark-mode .safety-tips h2 {
+    color: --secondary-color; 
+}
+
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 1rem;
+    background-color: var(--footer-bg-color);
+    color: var(--footer-text-color);
+    margin-top: 2rem;
+}
+
+/* Dark Mode Toggle Button */
+#theme-toggle {
+    padding: 0.5rem 1rem;
+    background-color: var(--primary-color);
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s;
+}
+
+#theme-toggle:hover {
+    background-color: var(--accent-color);
+    transform: scale(1.1);
+}

@@ -1,0 +1,47 @@
+/* Admin Dashboard */
+.admin-dashboard {
+    padding: 2rem;
+}
+
+.admin-dashboard h2 {
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+/* Report Management */
+.report-management, .user-management {
+    margin-bottom: 2rem;
+}
+
+.report-management h3, .user-management h3 {
+    margin-bottom: 1rem;
+}
+
+.report-management table, .user-management table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.report-management th, .report-management td, .user-management th, .user-management td {
+    padding: 0.8rem;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+.report-management th, .user-management th {
+    background-color: #333;
+    color: #fff;
+}
+
+.report-management button, .user-management button {
+    padding: 0.5rem 1rem;
+    margin-right: 0.5rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.report-management button:hover, .user-management button:hover {
+    background-color: #555;
+}
