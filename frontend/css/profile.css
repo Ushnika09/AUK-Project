@@ -1,0 +1,61 @@
+/* Profile Section */
+.profile {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.profile h2 {
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.profile-details {
+    margin-bottom: 2rem;
+}
+
+.profile-details p {
+    margin-bottom: 0.5rem;
+}
+
+.profile-details button {
+    padding: 0.5rem 1rem;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.profile-details button:hover {
+    background-color: #555;
+}
+
+/* Submitted Reports */
+.submitted-reports {
+    margin-top: 2rem;
+}
+
+.submitted-reports h3 {
+    margin-bottom: 1rem;
+}
+
+.submitted-reports table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.submitted-reports th, .submitted-reports td {
+    padding: 0.8rem;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+.submitted-reports th {
+    background-color: #333;
+    color: #fff;
+}

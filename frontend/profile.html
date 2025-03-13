@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile - SafeHaven</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/profile.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav>
+        <div class="logo">SafeHaven</div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="profile.html">My Profile</a></li>
+            <li><a href="profile.html">My Profile</a></li>
+            <li><a href="report.html">Report</a></li>
+            <li><a href="login.html">Logout</a></li>
+            <li><button id="theme-toggle">🌙</button></li>
+        </ul>
+    </nav>
+
+    <!-- Profile Section -->
+    <section class="profile">
+        <h2>My Profile</h2>
+        <div class="profile-details">
+            <p><strong>Name:</strong> <span id="profile-name">John Doe</span></p>
+            <p><strong>Email:</strong> <span id="profile-email">john@example.com</span></p>
+            <p><strong>Phone:</strong> <span id="profile-phone">+1234567890</span></p>
+            <button id="edit-profile">Edit Profile</button>
+        </div>
+
+        <!-- Submitted Reports -->
+        <div class="submitted-reports">
+            <h3>Submitted Reports</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Location</th>
+                        <th>Description</th>
+                        <th>Severity</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody id="reports-list">
+                    <!-- Reports will be dynamically added here -->
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2023 SafeHaven. All rights reserved.</p>
+    </footer>
+
+    <script src="js/profile.js"></script>
+</body>
+</html>
