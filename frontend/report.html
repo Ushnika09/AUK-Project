@@ -1,3 +1,61 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Report Incident - SafeHaven</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/report.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    Navigation Bar 
+    <nav>
+        <div class="logo">SafeHaven</div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="profile.html">My Profile</a></li>
+            <li><a href="report.html">Report</a></li>
+            <li><a href="login.html">Login</a></li>
+            <li><a href="register.html">Register</a></li>
+            <li><button id="theme-toggle">🌙</button></li>
+        </ul>
+    </nav>
+
+    <!-- Report Form 
+    <section class="report-form">
+        <h2>Report an Incident</h2>
+        <form id="reportForm">
+            <label for="latitude">Latitude</label>
+            <input type="text" id="latitude" name="latitude" placeholder="Enter latitude" required>
+
+            <label for="longitude">Longitude</label>
+            <input type="text" id="longitude" name="longitude" placeholder="Enter longitude" required>
+
+            <label for="description">Description</label>
+            <textarea id="description" name="description" placeholder="Describe the incident" required></textarea>
+
+            <label for="severity">Severity</label>
+            <select id="severity" name="severity" required>
+                <option value="high">High</option>
+                <option value="medium">Medium</option>
+                <option value="low">Low</option>
+            </select>
+
+            <button type="submit">Submit Report</button>
+        </form>
+    </section>
+
+    <!-- Footer 
+    <footer>
+        <p>&copy; 2023 SafeHaven. All rights reserved.</p>
+    </footer>
+
+    <script src="js/report.js"></script>
+</body>
+</html> -->
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -26,29 +84,94 @@
     <section class="report-form">
         <h2>Report an Incident</h2>
         <form id="reportForm">
+            <label for="incidentTitle">Incident Title</label>
+            <input type="text" id="incidentTitle" name="incidentTitle" placeholder="Enter a title for the incident" required>
+
+            <label for="dateTime">Date & Time</label>
+            <input type="datetime-local" id="dateTime" name="dateTime" required>
+
             <label for="latitude">Latitude</label>
-            <input type="text" id="latitude" name="latitude" placeholder="Enter latitude" required>
-
+            <input type="text" id="latitude" name="latitude" placeholder="Fetching location..." readonly required>
+            
             <label for="longitude">Longitude</label>
-            <input type="text" id="longitude" name="longitude" placeholder="Enter longitude" required>
-
+            <input type="text" id="longitude" name="longitude" placeholder="Fetching location..." readonly required>
+            
+            <button type="button" id="getLocationBtn">Get Live Location</button>
+            
+            <label for="crimeType">Type of Crime</label>
+            <select id="crimeType" name="crimeType" required>
+                <optgroup label="Harassment & Threats">
+                    <option value="eve_teasing">Eve-Teasing (Verbal Harassment)</option>
+                    <option value="catcalling">Catcalling</option>
+                    <option value="stalking">Stalking</option>
+                    <option value="threats">Threats & Intimidation</option>
+                    <option value="molestation">Unwanted Touching (Molestation)</option>
+                </optgroup>
+                <optgroup label="Robbery & Theft">
+                    <option value="snatching">Snatching (Phone, Bag, Jewelry)</option>
+                    <option value="pickpocketing">Pickpocketing</option>
+                    <option value="forced_robbery">Forced Robbery</option>
+                </optgroup>
+                <optgroup label="Public Transport Safety">
+                    <option value="public_transport_harassment">Harassment in Public Transport</option>
+                    <option value="suspicious_taxi">Suspicious Taxi/Auto Behavior</option>
+                    <option value="overcrowding">Overcrowding & Unsafe Situations</option>
+                </optgroup>
+                <optgroup label="Environmental & Infrastructure Concerns">
+                    <option value="dark_street">Poor Street Lighting</option>
+                    <option value="no_cctv">Lack of CCTV Coverage</option>
+                    <option value="isolated_area">Isolated Areas</option>
+                    <option value="suspicious_activity">Suspicious Activities/Individuals</option>
+                </optgroup>
+            </select>
+            
             <label for="description">Description</label>
             <textarea id="description" name="description" placeholder="Describe the incident" required></textarea>
-
+            
             <label for="severity">Severity</label>
             <select id="severity" name="severity" required>
                 <option value="high">High</option>
                 <option value="medium">Medium</option>
                 <option value="low">Low</option>
             </select>
-
+            
+            <label for="peopleInvolved">Number of People Involved</label>
+            <input type="number" id="peopleInvolved" name="peopleInvolved" min="1" required>
+            
+            <label>Was anyone injured?</label>
+            <div>
+                <input type="radio" id="injuredYes" name="injured" value="yes" required>
+                <label for="injuredYes">Yes</label>
+                <input type="radio" id="injuredNo" name="injured" value="no" required>
+                <label for="injuredNo">No</label>
+            </div>
+            
+            <label>Was it reported to authorities?</label>
+            <div>
+                <input type="radio" id="reportedYes" name="reported" value="yes" required>
+                <label for="reportedYes">Yes</label>
+                <input type="radio" id="reportedNo" name="reported" value="no" required>
+                <label for="reportedNo">No</label>
+            </div>
+            
+            <label>Report Anonymously?</label>
+            <div>
+                <input type="radio" id="anonymousYes" name="anonymous" value="yes" required>
+                <label for="anonymousYes">Yes</label>
+                <input type="radio" id="anonymousNo" name="anonymous" value="no" required>
+                <label for="anonymousNo">No</label>
+            </div>
+            
+            <label for="media">Upload Photo/Video (Optional):</label>
+            <input type="file" id="media" name="media" accept="image/*,video/*">
+            
             <button type="submit">Submit Report</button>
         </form>
     </section>
 
     <!-- Footer -->
     <footer>
-        <p>&copy; 2023 SafeHaven. All rights reserved.</p>
+        <p>&copy; 2025 SafeHaven. All rights reserved.</p>
     </footer>
 
     <script src="js/report.js"></script>

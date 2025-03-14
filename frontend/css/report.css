@@ -1,4 +1,4 @@
-/* Report Form */
+/* Report Form
 .report-form {
     max-width: 600px;
     margin: 2rem auto;
@@ -40,4 +40,138 @@
 
 .report-form button:hover {
     background-color: #555;
+} */
+
+
+
+/* General Styles */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f9;
+    color: #333;
+}
+
+/* Navigation Bar */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #222;
+    padding: 10px 20px;
+}
+
+.logo {
+    color: #fff;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+}
+
+.nav-links li {
+    display: inline;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.nav-links a:hover {
+    color: #fbc02d;
+}
+
+/* Report Form Section */
+.report-form {
+    max-width: 600px;
+    margin: 30px auto;
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.report-form h2 {
+    text-align: center;
+    color: #222;
+}
+
+.report-form label {
+    font-weight: 600;
+    margin-top: 10px;
+    display: block;
+}
+
+.report-form input,
+.report-form select,
+.report-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.report-form textarea {
+    resize: none;
+    height: 100px;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    background-color: #fbc02d;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 15px;
+}
+
+button:hover {
+    background-color: #e0a800;
+}
+
+/* Radio Button Styles */
+.report-form div {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-top: 5px;
+}
+
+input[type="radio"] {
+    margin-right: 5px;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    background: #222;
+    color: #fff;
+    padding: 10px;
+    margin-top: 20px;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    .report-form {
+        width: 90%;
+    }
+
+    .nav-links {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
 }
