@@ -1,61 +1,3 @@
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Report Incident - SafeHaven</title>
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="css/report.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-</head>
-<body>
-    Navigation Bar 
-    <nav>
-        <div class="logo">SafeHaven</div>
-        <ul class="nav-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="profile.html">My Profile</a></li>
-            <li><a href="report.html">Report</a></li>
-            <li><a href="login.html">Login</a></li>
-            <li><a href="register.html">Register</a></li>
-            <li><button id="theme-toggle">🌙</button></li>
-        </ul>
-    </nav>
-
-    <!-- Report Form 
-    <section class="report-form">
-        <h2>Report an Incident</h2>
-        <form id="reportForm">
-            <label for="latitude">Latitude</label>
-            <input type="text" id="latitude" name="latitude" placeholder="Enter latitude" required>
-
-            <label for="longitude">Longitude</label>
-            <input type="text" id="longitude" name="longitude" placeholder="Enter longitude" required>
-
-            <label for="description">Description</label>
-            <textarea id="description" name="description" placeholder="Describe the incident" required></textarea>
-
-            <label for="severity">Severity</label>
-            <select id="severity" name="severity" required>
-                <option value="high">High</option>
-                <option value="medium">Medium</option>
-                <option value="low">Low</option>
-            </select>
-
-            <button type="submit">Submit Report</button>
-        </form>
-    </section>
-
-    <!-- Footer 
-    <footer>
-        <p>&copy; 2023 SafeHaven. All rights reserved.</p>
-    </footer>
-
-    <script src="js/report.js"></script>
-</body>
-</html> -->
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -83,12 +25,12 @@
     <!-- Report Form -->
     <section class="report-form">
         <h2>Report an Incident</h2>
-        <form id="reportForm">
+        <form id="reportForm" action="/submit-report" method="POST" enctype="multipart/form-data">
             <label for="incidentTitle">Incident Title</label>
-            <input type="text" id="incidentTitle" name="incidentTitle" placeholder="Enter a title for the incident" required>
+            <input type="text" id="incident_title" name="incident_title" placeholder="Enter a title for the incident" required>
 
             <label for="dateTime">Date & Time</label>
-            <input type="datetime-local" id="dateTime" name="dateTime" required>
+            <input type="datetime-local" id="date_time" name="date_time" required>
 
             <label for="latitude">Latitude</label>
             <input type="text" id="latitude" name="latitude" placeholder="Fetching location..." readonly required>
@@ -99,7 +41,7 @@
             <button type="button" id="getLocationBtn">Get Live Location</button>
             
             <label for="crimeType">Type of Crime</label>
-            <select id="crimeType" name="crimeType" required>
+            <select id="crime_type" name="crime_type" required>
                 <optgroup label="Harassment & Threats">
                     <option value="eve_teasing">Eve-Teasing (Verbal Harassment)</option>
                     <option value="catcalling">Catcalling</option>
@@ -135,8 +77,8 @@
                 <option value="low">Low</option>
             </select>
             
-            <label for="peopleInvolved">Number of People Involved</label>
-            <input type="number" id="peopleInvolved" name="peopleInvolved" min="1" required>
+            <label for="peopleIinvolved">Number of People Involved</label>
+            <input type="number" id="people_involved" name="peopleInvolved" min="1" required>
             
             <label>Was anyone injured?</label>
             <div>

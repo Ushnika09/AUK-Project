@@ -1,55 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script>
+        // Initialize theme on page load
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        document.documentElement.setAttribute('data-theme', savedTheme);
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register - SafeHaven</title>
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/register.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-    <!-- Navigation Bar -->
+    <!-- Simplified navigation -->
     <nav>
         <div class="logo">SafeHaven</div>
         <ul class="nav-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="report.html">Report</a></li>
             <li><a href="login.html">Login</a></li>
-            <li><a href="register.html">Register</a></li>
+            <li><button id="theme-toggle" aria-label="Toggle dark mode">🌙</button></li>
         </ul>
     </nav>
 
     <!-- Register Form -->
     <section class="auth-form">
-        <h2>Register</h2>
+        <h2><i class="fas fa-user-plus"></i> Register</h2>
         <form id="registerForm">
-            <label for="name">Name</label>
-            <input type="text" id="name" name="name" placeholder="Enter your name" required>
+            <div class="input-group">
+                <i class="fas fa-user"></i>
+                <input type="text" id="name" name="name" placeholder="Enter your name" required>
+            </div>
 
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" placeholder="Enter your email" required>
+            <div class="input-group">
+                <i class="fas fa-envelope"></i>
+                <input type="email" id="email" name="email" placeholder="Enter your email" required>
+            </div>
 
-            <label for="phone">Phone Number</label>
-            <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required>
+            <div class="input-group">
+                <i class="fas fa-phone"></i>
+                <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required>
+            </div>
 
-            <label for="password">Password</label>
-            <input type="password" id="password" name="password" placeholder="Enter your password" required>
+            <div class="input-group">
+                <i class="fas fa-lock"></i>
+                <input type="password" id="password" name="password" placeholder="Enter your password" required>
+            </div>
 
-            <label for="confirmPassword">Confirm Password</label>
-            <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm your password" required>
+            <div class="input-group">
+                <i class="fas fa-lock"></i>
+                <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm your password" required>
+            </div>
 
             <!-- OTP Verification Section -->
             <div id="otpSection" style="display: none;">
-                <label for="otp">Enter OTP</label>
-                <input type="text" id="otp" name="otp" placeholder="Enter OTP" required>
-                <button type="button" id="verifyOTP">Verify OTP</button>
+                <div class="input-group">
+                    <i class="fas fa-key"></i>
+                    <input type="text" id="otp" name="otp" placeholder="Enter OTP" required>
+                </div>
+                <button type="button" id="verifyOTP" class="btn-verify">
+                    <i class="fas fa-check-circle"></i> Verify OTP
+                </button>
             </div>
 
-            <button type="button" id="sendOTP">Send OTP</button>
-            <button type="submit" id="submitBtn" style="display: none;">Register</button>
+            <button type="button" id="sendOTP" class="btn-send">
+                <i class="fas fa-paper-plane"></i> Send OTP
+            </button>
+            <button type="submit" id="submitBtn" style="display: none;" class="btn-register">
+                <i class="fas fa-user-plus"></i> Register
+            </button>
         </form>
-        <p>Already have an account? <a href="login.html">Login here</a>.</p>
+        <p style="color:black;">Already have an account? <a href="login.html">Login here</a></p>
     </section>
 
     <!-- Footer -->

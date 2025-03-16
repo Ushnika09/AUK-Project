@@ -30,7 +30,7 @@ document.getElementById('verifyOTP').addEventListener('click', () => {
 });
 
 // Handle form submission
-document.getElementById('registerForm').addEventListener('submit', (e) => {
+document.getElementById('registerForm').addEventListener('submit', async (e) => {
     e.preventDefault();
 
     const name = document.getElementById('name').value;
@@ -44,6 +44,32 @@ document.getElementById('registerForm').addEventListener('submit', (e) => {
         return;
     }
 
-    // Simulate registration (replace with backend API call in production)
-    alert(`Registration successful!\nName: ${name}\nEmail: ${email}\nPhone: ${phone}`);
+    try {
+        const response = await fetch('http://localhost:3000/api/auth/register', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            credentials: 'include',
+            body: JSON.stringify({
+                name,
+                email,
+                phone,
+                password
+            })
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+            alert('Registration successful!');
+            window.location.href = 'login.html';
+        } else {
+            alert(`Registration failed: ${data.error}`);
+        }
+    } catch (error) {
+        console.error('Registration error:', error);
+        alert('Registration failed. Please try again.');
+    }
 });

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SafeHaven - Your Safety Matters</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/index.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>.html and <about class="html"></about>
+    <!-- Navigation Bar -->
+    <nav>
+        <div class="logo">SafeHaven</div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="home.html">About</a></li>
+            <li><a href="profile.html">My Profile</a></li>
+            <li><a href="report.html">Report</a></li>
+            <li><a href="login.html">Login</a></li>
+            <li><a href="register.html">Register</a></li>
+            <!-- Show Admin link only if user is an admin -->
+            <li id="admin-link" style="display: none;"><a href="admin.html">Admin</a></li>
+            <li><button id="theme-toggle">🌙</button></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Your Safety, Our Priority</h1>
+        <p>Report and view unsafe locations in real-time.</p>
+        <div class="cta-buttons">
+            <a href="report.html" class="cta-button">Report Now</a>
+            <a href="register.html" class="cta-button">Sign Up</a>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <section class="map-container">
+        <div class="map-filters">
+            <select id="incident-type">
+                <option value="all">All Incidents</option>
+                <option value="harassment">Harassment</option>
+                <option value="theft">Theft</option>
+                <option value="assault">Assault</option>
+            </select>
+            <select id="severity-level">
+                <option value="all">All Severities</option>
+                <option value="high">High</option>
+                <option value="medium">Medium</option>
+                <option value="low">Low</option>
+            </select>
+            <input type="text" id="search-bar" placeholder="Search location...">
+        </div>
+        <div id="map"></div>
+    </section>
+
+    <!-- Safety Tips -->
+    <section class="safety-tips">
+        <h2>Safety Tips</h2>
+        <div class="tips-list">
+            <div class="tip">
+                <span role="img" aria-label="Awareness">👀</span>
+                <p>Always be aware of your surroundings.</p>
+            </div>
+            <div class="tip">
+                <span role="img" aria-label="Night">🌃</span>
+                <p>Avoid walking alone at night.</p>
+            </div>
+            <div class="tip">
+                <span role="img" aria-label="Emergency">📞</span>
+                <p>Keep emergency contacts handy.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Statistics -->
+    <section class="statistics">
+        <h2>Statistics</h2>
+        <p>Understanding the trends in crimes can help us take better preventive measures.</p>
+        <div class="charts">
+            <canvas id="comparison-chart"></canvas>
+        </div>
+    </section>
+
+    <!-- Contact Us Section -->
+    <section class="contact-us">
+        <h2>Contact Us</h2>
+        <p>Have questions or feedback? Reach out to us!</p>
+        <form class="contact-form">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" placeholder="Your Name" required>
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="Your Email" required>
+            <label for="message">Message</label>
+            <textarea id="message" name="message" placeholder="Your Message" rows="5" required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2023 SafeHaven. All rights reserved.</p>
+    </footer>
+
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

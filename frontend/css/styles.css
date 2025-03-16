@@ -5,7 +5,7 @@
     --primary-color: #00bfa6;
     --secondary-color: #3f51b5;
     --accent-color: #ff4081;
-    --card-bg-color: #ffffff;
+    --card-bg-color: #9ae0e4; /* Light blue for cards */
     --nav-bg-color: #2c3e50;
     --nav-text-color: #ffffff;
     --footer-bg-color: #2c3e50;
@@ -14,12 +14,12 @@
 
 /* Dark Mode Colors */
 body.dark-mode {
-    --background-color: #0f172a;
+    --background-color: #0f172a; /* Dark blue for background */
     --text-color: #f5f5f5;
     --primary-color: #00e0b1;
     --secondary-color: #536dfe;
     --accent-color: #ff4081;
-    --card-bg-color: #1e293b;
+    --card-bg-color: #1e293b; /* Slightly lighter dark blue for cards */
     --nav-bg-color: #374151;
     --nav-text-color: #ffffff;
     --footer-bg-color: #374151;
@@ -38,6 +38,16 @@ body {
     color: var(--text-color);
     background-color: var(--background-color);
     transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
 }
 
 /* Navigation Bar */
@@ -76,6 +86,21 @@ nav .nav-links a {
 nav .nav-links a:hover {
     color: var(--accent-color);
     transform: scale(1.05);
+}
+
+nav #theme-toggle {
+    padding: 0.5rem 1rem;
+    background-color: var(--primary-color);
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s;
+}
+
+nav #theme-toggle:hover {
+    background-color: var(--accent-color);
+    transform: scale(1.1);
 }
 
 /* Hero Section */
@@ -130,71 +155,160 @@ body.dark-mode .hero {
 /* Map Section */
 .map-container {
     padding: 2rem;
-    background-color: var(--card-bg-color);
+    background-color: var(--background-color);
+}
+
+.map-filters {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.map-filters select, .map-filters input {
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+#map {
+    height: 500px;
     border-radius: 10px;
-    margin: 2rem;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 /* Safety Tips */
 .safety-tips {
     padding: 2rem;
     background-color: var(--card-bg-color);
-    border-radius: 10px;
-    margin: 2rem;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    margin: 20px auto;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    max-width: 800px;
+    transition: background 0.3s, color 0.3s;
 }
 
 .safety-tips h2 {
     margin-bottom: 1rem;
-    color: var(--secondary-color);
-    font-weight: 700;
+    text-align: center;
 }
-.tips-carousel {
-    display: flex;
+
+.tips-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
     gap: 1rem;
-    overflow-x: auto;
+    justify-content: center;
 }
 
 .tip {
     padding: 1rem;
     background-color: var(--background-color);
     border-radius: 5px;
-    flex: 0 0 auto;
-    width: 300px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+    text-align: center;
+    font-size: 1.2rem;
 }
 
-/* Dark Mode Text Fix */
+.tip span {
+    font-size: 2rem;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.tip:nth-child(3) {
+    grid-column: span 2;
+    justify-self: center;
+}
+
+.tip:hover {
+    transform: scale(1.05);
+}
+
 body.dark-mode .tip {
-    background-color: var(--card-bg-color);
-    color: #ffffff;
+    background: #2e466c; /* Slightly lighter dark blue for tiles */
 }
 
 /* Statistics */
 .statistics {
     padding: 2rem;
     background-color: var(--card-bg-color);
-    border-radius: 10px;
-    margin: 2rem;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    margin: 20px auto;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    max-width: 800px;
+    transition: background 0.3s, color 0.3s;
 }
 
 .statistics h2 {
     margin-bottom: 1rem;
-    color: var(--secondary-color);
-    font-weight: 700;
+    text-align: center;
 }
+
+.statistics p {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
 .charts {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.charts canvas {
     width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
     height: 300px;
 }
-
-body.dark-mode .statistics h2,
-body.dark-mode .safety-tips h2 {
-    color: --secondary-color; 
+/* Contact Us Section */
+.contact-us {
+    background: var(--card-bg-color);
+    margin: 20px auto;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    max-width: 800px;
+    transition: background 0.3s, color 0.3s;
 }
 
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.contact-form label {
+    font-size: 1rem;
+    text-align: left;
+}
+
+.contact-form input,
+.contact-form textarea {
+    padding: 0.75rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    width: 100%;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.contact-form button {
+    background-color: #ff6b6b;
+    color: #fff;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.contact-form button:hover {
+    background-color: #ff4c4c;
+}
 
 /* Footer */
 footer {
@@ -205,78 +319,32 @@ footer {
     margin-top: 2rem;
 }
 
-/* Dark Mode Toggle Button */
-#theme-toggle {
-    padding: 0.5rem 1rem;
-    background-color: var(--primary-color);
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s;
-}
-
-#theme-toggle:hover {
-    background-color: var(--accent-color);
-    transform: scale(1.1);
-}
-
-/* Contact Us Section */
-.contact-us {
-    padding: 2rem;
-    background-color: var(--card-bg-color);
-    border-radius: 10px;
-    margin: 2rem;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-}
-
-.contact-us h2 {
-    margin-bottom: 1rem;
-    color: var(--secondary-color);
-    font-weight: 700;
-}
-
-.contact-us p {
-    margin-bottom: 1.5rem;
-    font-size: 1.1rem;
-}
-
-.contact-form {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-}
-
-.contact-form input,
-.contact-form textarea {
-    padding: 0.8rem;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 1rem;
+/* Dark Mode */
+body.dark-mode {
     background-color: var(--background-color);
     color: var(--text-color);
-    transition: border-color 0.3s ease;
 }
 
-.contact-form input:focus,
-.contact-form textarea:focus {
-    border-color: var(--primary-color);
-    outline: none;
+body.dark-mode nav {
+    background-color: var(--nav-bg-color);
 }
 
-.contact-form button {
-    padding: 0.8rem 2rem;
-    background-color: var(--primary-color);
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    font-size: 1rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s;
+body.dark-mode .hero {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
 }
 
-.contact-form button:hover {
-    background-color: var(--accent-color);
-    transform: scale(1.05);
+body.dark-mode .map-container,
+body.dark-mode .safety-tips,
+body.dark-mode .statistics,
+body.dark-mode .contact-us {
+    background-color: var(--card-bg-color);
+}
+
+body.dark-mode .tip {
+    background-color: #2e466c;
+}
+
+body.dark-mode footer {
+    background-color: var(--footer-bg-color);
+    color: var(--footer-text-color);
 }

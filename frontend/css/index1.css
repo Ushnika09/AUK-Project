@@ -1,0 +1,402 @@
+/* General Styles */
+:root {
+    --background-color: #fff8e1;
+    --text-color: #212121;
+    --primary-color: #00bfa6;
+    --secondary-color: #3f51b5;
+    --accent-color: #ff4081;
+    --card-bg-color: #9ae0e4; /* Light blue for cards */
+    --nav-bg-color: #2c3e50;
+    --nav-text-color: #ffffff;
+    --footer-bg-color: #2c3e50;
+    --footer-text-color: #ffffff;
+}
+
+/* Dark Mode Colors */
+body.dark-mode {
+    --background-color: #0f172a; /* Dark blue for background */
+    --text-color: #f5f5f5;
+    --primary-color: #00e0b1;
+    --secondary-color: #536dfe;
+    --accent-color: #ff4081;
+    --card-bg-color: #1e293b; /* Slightly lighter dark blue for cards */
+    --nav-bg-color: #374151;
+    --nav-text-color: #ffffff;
+    --footer-bg-color: #374151;
+    --footer-text-color: #ffffff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--background-color);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+/* Navigation Bar */
+nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: var(--nav-bg-color);
+    color: var(--nav-text-color);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+nav .logo {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+nav .nav-links {
+    list-style: none;
+    display: flex;
+}
+
+nav .nav-links li {
+    margin-left: 5rem;
+}
+
+nav .nav-links a {
+    color: var(--nav-text-color);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease, transform 0.2s;
+}
+
+nav .nav-links a:hover {
+    color: var(--accent-color);
+    transform: scale(1.05);
+}
+
+nav #theme-toggle {
+    padding: 0.5rem 1rem;
+    background-color: var(--primary-color);
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s;
+}
+
+nav #theme-toggle:hover {
+    background-color: var(--accent-color);
+    transform: scale(1.1);
+}
+
+/* Hero Section */
+.hero {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 5rem 2rem;
+    background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+    color: #fff;
+    transition: background 0.3s ease;
+}
+
+body.dark-mode .hero {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+}
+
+.hero h1 {
+    font-size: 3.5rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
+}
+
+.hero p {
+    font-size: 1.3rem;
+    margin-bottom: 2rem;
+}
+
+.hero .cta-buttons {
+    display: flex;
+    gap: 1rem;
+}
+
+.hero .cta-button {
+    padding: 0.8rem 2rem;
+    background-color: var(--secondary-color);
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.2s;
+}
+
+.hero .cta-button:hover {
+    background-color: var(--accent-color);
+    transform: scale(1.1);
+}
+
+/* Section Styles */
+section {
+    padding: 3rem 1rem;
+    text-align: center;
+}
+
+section h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+section p {
+    font-size: 1rem;
+    margin-bottom: 2rem;
+}
+
+/* Features Section */
+.features {
+    background: var(--card-bg-color);
+    margin: 20px auto;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    max-width: 800px;
+    transition: background 0.3s, color 0.3s;
+}
+
+.feature-box {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    justify-content: center;
+}
+
+.feature {
+    background: var(--background-color);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+}
+
+.feature:hover {
+    transform: scale(1.05);
+}
+
+body.dark-mode .feature {
+    background: #2e466c; /* Slightly lighter dark blue for tiles */
+}
+
+.features .feature h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.features .feature p {
+    font-size: 1rem;
+}
+
+/* Testimonials Section */
+.testimonials .testimonial-box {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.testimonials .testimonial {
+    background-color: #fff;
+    padding: 1.5rem;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    text-align: left;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.testimonials .testimonial p {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+}
+
+.testimonials .testimonial h3 {
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+/* Call to Action Section */
+.cta {
+    background-color: #ff6b6b;
+    color: #fff;
+    padding: 3rem 1rem;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.cta .cta-button {
+    background-color: #fff;
+    color: #ff6b6b;
+    padding: 0.75rem 1.5rem;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+}
+
+.cta .cta-button:hover {
+    background-color: #ff4c4c;
+    color: #fff;
+}
+
+/* Team Section */
+.team {
+    background: var(--card-bg-color);
+    margin: 20px auto;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    max-width: 800px;
+    transition: background 0.3s, color 0.3s;
+}
+
+.team-members {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.member {
+    background: var(--background-color);
+    padding: 20px;
+    border-radius: 8px;
+    min-width: 150px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+    text-align: center;
+}
+
+.member img {
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    margin-bottom: 1rem;
+}
+
+.member:hover {
+    transform: scale(1.05);
+}
+
+body.dark-mode .member {
+    background: #2e466c; /* Slightly lighter dark blue for team member cards */
+}
+
+.team .member h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+}
+
+.team .member p {
+    font-size: 1rem;
+}
+
+/* Contact Section */
+.contact {
+    background: var(--card-bg-color);
+    margin: 20px auto;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    max-width: 800px;
+    transition: background 0.3s, color 0.3s;
+}
+
+.contact form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.contact form label {
+    font-size: 1rem;
+    text-align: left;
+}
+
+.contact form input,
+.contact form textarea {
+    padding: 0.75rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    width: 100%;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.contact form button {
+    background-color: #ff6b6b;
+    color: #fff;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.contact form button:hover {
+    background-color: #ff4c4c;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 1rem;
+    background-color: var(--footer-bg-color);
+    color: var(--footer-text-color);
+    margin-top: 2rem;
+}
+
+/* Dark Mode */
+body.dark-mode {
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
+body.dark-mode nav {
+    background-color: var(--nav-bg-color);
+}
+
+body.dark-mode .hero {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+}
+
+body.dark-mode .features,
+body.dark-mode .testimonials .testimonial,
+body.dark-mode .team .member {
+    background-color: var(--card-bg-color);
+}
+
+body.dark-mode .cta {
+    background-color: var(--background-color);
+}
+
+body.dark-mode footer {
+    background-color: var(--footer-bg-color);
+    color: var(--footer-text-color);
+}

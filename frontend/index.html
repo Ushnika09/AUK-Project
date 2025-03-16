@@ -3,10 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SafeHaven - Your Safety Matters</title>
+    <title>SafeHaven - Your Safety, Our Priority</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/index1.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -14,85 +13,121 @@
     <nav>
         <div class="logo">SafeHaven</div>
         <ul class="nav-links">
-            <li><a href="#">Home</a></li>
-            <li><a href="about.html">About Us</a></li>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="home.html">About</a></li>
             <li><a href="profile.html">My Profile</a></li>
             <li><a href="report.html">Report</a></li>
             <li><a href="login.html">Login</a></li>
             <li><a href="register.html">Register</a></li>
-            <!-- Show Admin link only if user is an admin -->
-            <li id="admin-link" style="display: none;"><a href="admin.html">Admin</a></li>
             <li><button id="theme-toggle">🌙</button></li>
         </ul>
     </nav>
 
     <!-- Hero Section -->
     <section class="hero">
-        <h1>Your Safety, Our Priority</h1>
-        <p>Report and view unsafe locations in real-time.</p>
+        <h1>Welcome to SafeHaven</h1>
+        <p>Your Safety, Our Priority</p>
         <div class="cta-buttons">
-            <a href="report.html" class="cta-button">Report Now</a>
-            <a href="register.html" class="cta-button">Sign Up</a>
+            <a href="register.html" class="cta-button">Join Us</a>
+            <a href="login.html" class="cta-button">Login</a>
         </div>
     </section>
 
-    <!-- Map Section -->
-    <section class="map-container">
-        <div class="map-filters">
-            <select id="incident-type">
-                <option value="all">All Incidents</option>
-                <option value="harassment">Harassment</option>
-                <option value="theft">Theft</option>
-                <option value="assault">Assault</option>
-            </select>
-            <select id="severity-level">
-                <option value="all">All Severities</option>
-                <option value="high">High</option>
-                <option value="medium">Medium</option>
-                <option value="low">Low</option>
-            </select>
-            <input type="text" id="search-bar" placeholder="Search location...">
-        </div>
-        <div id="map"></div>
+    <!-- About Us Content -->
+    <section class="intro">
+        <h2>Our Mission</h2>
+        <p>SafeHaven is a <strong>community-driven safety platform</strong> designed to help individuals, especially women, navigate their surroundings with confidence. By reporting unsafe locations and accessing real-time alerts, users can make informed decisions and contribute to a safer environment.</p>
     </section>
 
-    <!-- Safety Tips -->
-    <section class="safety-tips">
-        <h2>Safety Tips</h2>
-        <div class="tips-carousel">
-            <div class="tip">Always be aware of your surroundings.</div>
-            <div class="tip">Avoid walking alone at night.</div>
-            <div class="tip">Keep emergency contacts handy.</div>
-        </div>
-    </section>
-
-    <!-- Statistics -->
-    <section class="statistics">
-        <h2>Statistics</h2>
-        <div class="charts">
-            <canvas id="incident-chart"></canvas>
+    <!-- Key Features -->
+    <section class="features">
+        <h2>Why Choose SafeHaven?</h2>
+        <div class="feature-box">
+            <div class="feature">
+                <h3>📍 Report Unsafe Locations</h3>
+                <p>Users can <strong>mark areas</strong> they feel unsafe in, helping others stay informed.</p>
+            </div>
+            <div class="feature">
+                <h3>🗺️ Interactive Safety Map</h3>
+                <p>View reported areas in real-time using an <strong>integrated map</strong> powered by Leaflet.js.</p>
+            </div>
+            <div class="feature">
+                <h3>🔐 Secure & Anonymous Reporting</h3>
+                <p>Reports can be <strong>anonymous</strong> to protect user privacy while ensuring community safety.</p>
+            </div>
+            <div class="feature">
+                <h3>🔔 Instant Alerts</h3>
+                <p>Get <strong>instant notifications</strong> about unsafe locations in your area.</p>
+            </div>
         </div>
     </section>
 
-    <!-- Contact Us Section -->
-    <section class="contact-us">
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <h2>What Our Users Say</h2>
+        <div class="testimonial-box">
+            <div class="testimonial">
+                <p>"SafeHaven has made me feel so much safer when traveling alone. The real-time alerts are a lifesaver!"</p>
+                <h3>- Sarah K.</h3>
+            </div>
+            <div class="testimonial">
+                <p>"Reporting unsafe locations has never been easier. I love how the community comes together to keep each other safe."</p>
+                <h3>- John D.</h3>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="cta">
+        <h2>Ready to Make a Difference?</h2>
+        <p>Join SafeHaven today and contribute to a safer community.</p>
+        <a href="register.html" class="cta-button">Get Started</a>
+    </section>
+
+    <!-- Meet the Team -->
+    <section class="team">
+        <h2>Meet the Team</h2>
+        <div class="team-members">
+            <div class="member">
+                <img src="images/aiman.jpg" alt="Aiman">
+                <h3>Aiman</h3>
+                <p>Research Lead</p>
+            </div>
+            <div class="member">
+                <img src="images/ushnika.jpg" alt="Ushnika">
+                <h3>Ushnika</h3>
+                <p>Backend & Security Expert</p>
+            </div>
+            <div class="member">
+                <img src="images/kamal.jpg" alt="Kamal">
+                <h3>Kamal</h3>
+                <p>UI/UX & Frontend Developer</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Us -->
+    <section class="contact">
         <h2>Contact Us</h2>
-        <p>Have questions or feedback? Reach out to us!</p>
-        <form class="contact-form">
-            <input type="text" placeholder="Your Name" required>
-            <input type="email" placeholder="Your Email" required>
-            <textarea placeholder="Your Message" rows="5" required></textarea>
+        <p>If you have any questions or need support, feel free to reach out to us.</p>
+        <form>
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" required>
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+            <label for="message">Message</label>
+            <textarea id="message" name="message" required></textarea>
             <button type="submit">Send Message</button>
         </form>
     </section>
 
     <!-- Footer -->
     <footer>
-        <p>&copy; 2023 SafeHaven. All rights reserved.</p>
+        <p>&copy; 2025 SafeHaven. All rights reserved.</p>
     </footer>
 
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="js/main.js"></script>
+    <script src="js/theme-toggle.js"></script>
 </body>
 </html>
