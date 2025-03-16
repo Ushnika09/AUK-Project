@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const latitudeInput = document.getElementById("latitude");
     const longitudeInput = document.getElementById("longitude");
 
-    // 🗺️ Get user's live location
+    // 🗺️ Get User's Location
     getLocationBtn.addEventListener("click", function () {
         if (!navigator.geolocation) {
             alert("❌ Geolocation is not supported by your browser.");
@@ -48,30 +48,32 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     // 📝 Form Submission
-    form.addEventListener("submit", function (event) {
+    form.addEventListener("submit", async function (event) {
         event.preventDefault();
         console.log("🚀 Form submitted! Fetch request is about to start...");
 
+        // Get form data
         const formData = new FormData(form);
 
-        // 🔄 Fix 'dateTime' -> 'date_time' if needed
-        if (formData.has("dateTime")) {
-            formData.append("date_time", formData.get("dateTime"));
-            formData.delete("dateTime");
-        }
+        console.log("📡 Sending Report Data...");
 
-        console.log("📝 Form Data Entries:");
-        formData.forEach((value, key) => console.log(`${key}: ${value}`));
+        try {
+            const response = await fetch("http://localhost:3000/submit-report", {
+                method: "POST",
+                body: formData, // ✅ Fix: Sending FormData for file upload
+            });
 
-        fetch("http://localhost:3000/submit-report", {
-            method: "POST",
-            body: formData,
-        })
-        .then(response => {
             console.log("📡 Fetch request sent. Awaiting response...");
-            return response.json();
-        })
-        .then(data => {
+
+            let data;
+            try {
+                data = await response.json();
+            } catch (jsonError) {
+                console.error("❌ JSON Parsing Error:", jsonError);
+                alert("❌ Unexpected response from server.");
+                return;
+            }
+
             console.log("📡 Server Response:", data);
 
             if (data.success) {
@@ -84,10 +86,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 alert("❌ Error submitting report: " + (data.error || "Unknown error"));
                 console.error("❌ Error Details:", data.details || "No details provided.");
             }
-        })
-        .catch(error => {
+        } catch (error) {
             console.error("❌ Fetch Error:", error);
             alert("❌ An error occurred. Please try again.");
-        });
+        }
     });
 });

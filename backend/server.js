@@ -1,22 +1,42 @@
+require("dotenv").config();
 const express = require("express");
 const multer = require("multer");
 const mysql = require("mysql2");
 const cors = require("cors");
+const path = require("path");
 
 const app = express();
-const upload = multer({ dest: "uploads/" });
+
+// ✅ CORS Security Settings
+app.use(cors({
+    origin: ["http://localhost:5500", "http://127.0.0.1:5501"], // Allow both
+    methods: ["POST"],
+    allowedHeaders: ["Content-Type"]
+}));
+
 
 // ✅ Middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(cors());
 
-// ✅ Database Connection
+// ✅ File Upload Configuration (Limit & Type)
+const upload = multer({
+    dest: "uploads/",
+    limits: { fileSize: 5 * 1024 * 1024 }, // Max 5MB
+    fileFilter: (req, file, cb) => {
+        if (!file.mimetype.startsWith("image/") && !file.mimetype.startsWith("video/")) {
+            return cb(new Error("Only images and videos are allowed"));
+        }
+        cb(null, true);
+    }
+});
+
+// ✅ Database Connection (Using Environment Variables)
 const db = mysql.createConnection({
-    host: "localhost",
-    user: "root",
-    password: "password",
-    database: "safehaven"
+    host: process.env.DB_HOST || "localhost",
+    user: process.env.DB_USER || "root",
+    password: process.env.DB_PASSWORD || "password",
+    database: process.env.DB_NAME || "safehaven"
 });
 
 db.connect((err) => {
@@ -56,7 +76,7 @@ app.post("/submit-report", upload.single("media"), (req, res) => {
 
         const peopleInvolvedInt = people_involved ? parseInt(people_involved, 10) : 0;
         
-        // ✅ Store ENUM values as "yes" or "no" (not 1 or 0)
+        // ✅ Store ENUM values as "yes" or "no"
         const injuredEnum = injured === "yes" ? "yes" : "no";
         const reportedEnum = reported === "yes" ? "yes" : "no";
         const anonymousEnum = anonymous === "yes" ? "yes" : "no";
@@ -75,17 +95,13 @@ app.post("/submit-report", upload.single("media"), (req, res) => {
         console.log("📝 SQL Query:", sql);
         console.log("📦 Query Values:", values);
 
-        db.query(sql, values, (err, result) => {
+        db.execute(sql, values, (err, result) => {
             if (err) {
                 console.error("❌ Database Insert Error:", err);
-                console.error("📌 SQL Message:", err.sqlMessage);
-                console.error("📌 SQL State:", err.sqlState);
-                console.error("📌 Error Code:", err.errno);
-
                 return res.status(500).json({
                     success: false,
                     error: "Database error",
-                    details: err.sqlMessage
+                    details: err.message
                 });
             }
             console.log("✅ Report inserted successfully:", result);

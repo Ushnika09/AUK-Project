@@ -1,75 +1,129 @@
-// Simulate OTP sending and verification
-let generatedOTP = null;
+// ================== FRONTEND: OTP Verification ==================
+document.addEventListener('DOMContentLoaded', () => {
+    const registerForm = document.getElementById('registerForm');
+    const sendOTPBtn = document.getElementById('sendOTP');
+    const verifyOTPBtn = document.getElementById('verifyOTP');
+    const otpSection = document.getElementById('otpSection');
+    const submitBtn = document.getElementById('submitBtn');
 
-document.getElementById('sendOTP').addEventListener('click', async () => {
-    const phone = document.getElementById('phone').value;
+    sendOTPBtn.addEventListener('click', () => {
+        // Simulate sending OTP
+        alert('OTP sent to your phone number');
+        otpSection.style.display = 'block';
+        sendOTPBtn.style.display = 'none';
+    });
 
-    if (!phone) {
-        alert('Please enter your phone number.');
-        return;
-    }
+    verifyOTPBtn.addEventListener('click', () => {
+        // Simulate OTP verification
+        alert('OTP verified');
+        otpSection.style.display = 'none';
+        submitBtn.style.display = 'block';
+    });
 
-    // Simulate sending OTP (replace with Twilio API in production)
-    generatedOTP = Math.floor(1000 + Math.random() * 9000); // 4-digit OTP
-    alert(`OTP sent to ${phone}: ${generatedOTP}`);
+    registerForm.addEventListener('submit', (e) => {
+        e.preventDefault();
 
-    // Show OTP section
-    document.getElementById('otpSection').style.display = 'block';
-    document.getElementById('sendOTP').style.display = 'none';
-    document.getElementById('submitBtn').style.display = 'block';
+        const formData = new FormData(registerForm);
+        const data = {
+            name: formData.get('name'),
+            email: formData.get('email'),
+            phone: formData.get('phone'),
+            password: formData.get('password'),
+            confirmPassword: formData.get('confirmPassword')
+        };
+
+        fetch('/api/auth/register', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                alert('Registration successful');
+                window.location.href = 'login.html';
+            } else {
+                alert('Registration failed: ' + data.message);
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('Registration failed. Please try again.');
+        });
+    });
 });
 
 document.getElementById('verifyOTP').addEventListener('click', () => {
     const userOTP = document.getElementById('otp').value;
 
-    if (userOTP == generatedOTP) {
+    if (userOTP == localStorage.getItem('generatedOTP')) {
         alert('OTP verified successfully!');
+        document.getElementById('otp').disabled = true;
+        document.getElementById('verifyOTP').disabled = true;
     } else {
         alert('Invalid OTP. Please try again.');
     }
 });
 
-// Handle form submission
-document.getElementById('registerForm').addEventListener('submit', async (e) => {
-    e.preventDefault();
+// ================== BACKEND: User Registration ==================
+const express = require('express');
+const bcrypt = require('bcryptjs');
+const mysql = require('mysql');
+const bodyParser = require('body-parser');
 
-    const name = document.getElementById('name').value;
-    const email = document.getElementById('email').value;
-    const phone = document.getElementById('phone').value;
-    const password = document.getElementById('password').value;
-    const confirmPassword = document.getElementById('confirmPassword').value;
+const app = express();
+app.use(bodyParser.json());
 
-    if (password !== confirmPassword) {
-        alert('Passwords do not match.');
-        return;
+// Database Connection
+const db = mysql.createConnection({
+    host: 'localhost',
+    user: 'root',
+    password: 'password',
+    database: 'safehaven'
+});
+
+db.connect((err) => {
+    if (err) {
+        console.error('Database connection failed:', err);
+    } else {
+        console.log('Connected to MySQL Database');
+    }
+});
+
+// User Registration API
+app.post('/api/auth/register', async (req, res) => {
+    const { name, email, phone, password } = req.body;
+
+    if (!name || !email || !phone || !password) {
+        return res.status(400).json({ success: false, message: 'All fields are required' });
     }
 
-    try {
-        const response = await fetch('http://localhost:3000/api/auth/register', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json'
-            },
-            credentials: 'include',
-            body: JSON.stringify({
-                name,
-                email,
-                phone,
-                password
-            })
-        });
-
-        const data = await response.json();
-
-        if (response.ok) {
-            alert('Registration successful!');
-            window.location.href = 'login.html';
-        } else {
-            alert(`Registration failed: ${data.error}`);
+    // Check if user already exists
+    db.query('SELECT * FROM users WHERE email = ?', [email], (err, results) => {
+        if (err) {
+            return res.status(500).json({ success: false, message: 'Database error' });
         }
-    } catch (error) {
-        console.error('Registration error:', error);
-        alert('Registration failed. Please try again.');
-    }
+        if (results.length > 0) {
+            return res.status(400).json({ success: false, message: 'User already exists' });
+        }
+
+        // Hash password before storing
+        const hashedPassword = bcrypt.hashSync(password, 10);
+
+        db.query('INSERT INTO users (name, email, phone, password) VALUES (?, ?, ?, ?)',
+            [name, email, phone, hashedPassword], (err, result) => {
+                if (err) {
+                    return res.status(500).json({ success: false, message: 'Database error' });
+                }
+                res.json({ success: true, message: 'Registration successful' });
+            });
+    });
+});
+
+// Start Server
+const PORT = 5000;
+app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
 });
